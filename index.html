@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa's Apprentice: Naughty or Nice Edition</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="scene-intro" class="scene active">
+            <h1>Santa's Apprentice: Naughty or Nice Edition</h1>
+            <p>Welcome, Moon! Your journey begins in the Naughty or Nice department. Can you save Christmas?</p>
+            <button onclick="nextScene('scene-ch1')" aria-label="Start the adventure">Start the Adventure</button>
+        </div>
+
+        <div id="scene-ch1" class="scene">
+            <h2>Chapter 1: The Case of Denny Wilson</h2>
+            <p>
+                Denny Wilson, aged 8, is marked as "Naughty." But his record shows good deeds like helping his mom, donating to shelters, and building snow forts. What will you do?
+            </p>
+            <div class="decision-buttons">
+                <button onclick="makeDecision('trust', 'scene-ch1-fail')" aria-label="Trust the ledger">Trust the Ledger</button>
+                <button onclick="makeDecision('investigate', 'scene-ch1-success')" aria-label="Investigate further">Investigate Further</button>
+            </div>
+        </div>
+
+        <div id="scene-ch1-fail" class="scene">
+            <h2>Game Over</h2>
+            <p>Santa is disappointed you blindly trusted the ledger. You've been reassigned to coal duty!</p>
+            <button onclick="generateSummaryCard()" aria-label="View your summary">View Summary</button>
+        </div>
+
+        <div id="scene-ch1-success" class="scene">
+            <h2>Chapter 1 Continued</h2>
+            <p>
+                You investigate Denny's house and find him wrapping presents, but his brother Liam is dangling from the tree. What will you do?
+            </p>
+            <div class="decision-buttons">
+                <button onclick="makeDecision('lecture', 'scene-ch2')" aria-label="Lecture Denny">Lecture Denny</button>
+                <button onclick="makeDecision('ask', 'scene-ch2')" aria-label="Ask Liam what he thinks">Ask Liam What He Thinks</button>
+                <button onclick="makeDecision('naughty', 'scene-ch1-fail')" aria-label="Mark Denny as Naughty">Mark Denny as Naughty</button>
+            </div>
+        </div>
+
+        <div id="scene-ch2" class="scene">
+            <h2>Chapter 2: The Ledger Strikes Back</h2>
+            <p>
+                The Naughty or Nice Ledger starts rebelling! It wants to mark everyone Naughty. What will you do?
+            </p>
+            <div class="decision-buttons">
+                <button onclick="makeDecision('argue', 'scene-perfect-end')" aria-label="Argue with the Ledger">Argue with the Ledger</button>
+                <button onclick="makeDecision('santa', 'scene-good-end')" aria-label="Appeal to Santa for help">Appeal to Santa for Help</button>
+                <button onclick="makeDecision('hack', 'scene-perfect-end')" aria-label="Hack the ledger">Hack the Ledger</button>
+            </div>
+        </div>
+
+        <div id="scene-perfect-end" class="scene">
+            <h2>Christmas Saved!</h2>
+            <p>Congratulations, Moon! You saved Christmas and earned Santa's trust. You're promoted to Chief Apprentice!</p>
+            <button onclick="generateSummaryCard()" aria-label="View your summary">View Summary</button>
+        </div>
+
+        <div id="scene-good-end" class="scene">
+            <h2>Christmas Saved (Almost)!</h2>
+            <p>You saved Christmas, but Santa remains unsure of your methods. You're on probation!</p>
+            <button onclick="generateSummaryCard()" aria-label="View your summary">View Summary</button>
+        </div>
+
+        <div id="summary-card" class="summary-card hidden">
+            <h2>Your Game Summary</h2>
+            <p id="summary-content"></p>
+            <button onclick="restartGame()" aria-label="Restart the game">Restart Game</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
